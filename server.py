@@ -1,26 +1,3 @@
-# from cryptography.fernet import Fernet
-# import socket
-
-
-# key = Fernet.generate_key()
-# fernet = Fernet(key)
-
-
-# server_socket = socket.socket()
-# server_socket.bind(("127.1.0.10", 1345))
-# server_socket.listen(5)
-# print("Server is listening...")
-
-# conn, addr = server_socket.accept()
-# print("Connection from:", addr)
-
-# conn.send(key)
-
-# message = "Hello, client!"
-# encrypted_message = fernet.encrypt(message.encode())
-# conn.send(encrypted_message)
-
-# conn.close()
 import socket
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
@@ -43,11 +20,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
     server_socket.bind((host, port))
     server_socket.listen()
 
-    print(f"hhhh {host}:{port}")
+    print(f"server listining {host}:{port}")
     conn, addr = server_socket.accept()
 
     with conn:
-        print(f"tm{addr}")
+        print(f"{addr}")
 
         # الرسالة المراد إرسالها
         message = "This is a secret message."
